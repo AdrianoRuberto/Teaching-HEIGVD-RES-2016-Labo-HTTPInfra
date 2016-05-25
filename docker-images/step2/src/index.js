@@ -14,6 +14,7 @@ function genAddresses() {
 }
 
 expr.get("/", function(req, res) {
+	res.set("Content-type", "application/json");
 	res.send(JSON.stringify(genAddresses()));
 });
 
