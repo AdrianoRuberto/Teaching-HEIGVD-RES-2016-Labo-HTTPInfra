@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+<h1> Refresh every <span id="time"></span> s </h1>
+
+<div id="adr"></div>
+
+<script>
+	const time = 1; // temps en [s]
+	$("#time").text(time);
+	
+	function refresh() {
+		$("#adr").html("");
+		$.getJSON("/addresses", function(adress) {
+			adress.forEach(a => $("#adr").append($("<p>").text(a)));
+		});
+	}
+	
+	setInterval(refresh, time * 1000);
+</script>
